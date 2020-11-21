@@ -1,0 +1,313 @@
+Starting with tag:
+[TAG fenfire-0.1
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070213183146] 
+[add a function to convert Gtk colors to our Color type
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070214152739] 
+[give a known base URI to the parser so that we will be able to save the graph back to disk without changing relative to absolute URIs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215092822] 
+[add GtkFixes module with code yet to be released in gtk2hs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215100100] 
+[add code for loading from URIs to Raptor.chs (untested, not beautiful)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215100045] 
+[use gtk style colors for focus node
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215095716] 
+[don't combine text color with markColor, rather default it to black
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215104248] 
+[need to use closePath to get a sharp corner
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215105437] 
+[fix a race condition (bug in gtk?) of windowRemoveAccelGroup by employing a fake AccelGroup instead
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215182402] 
+[don't use text color for node border
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215183045] 
+[A presentation view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215123733] 
+[interpolate but don't bounce width & height, it usually doesn't look good
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215125014] 
+[add view menu
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215131335] 
+[resolve conflict
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215135300] 
+[use alpha again for the rectangle behind the focus
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215135335] 
+[swap parameter types as in the patch Duncan Coutts applied to gtk2hs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215154614] 
+[use gtk theme color as the canvas background
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215171851] 
+[experimental support for loading data from URIs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070215183322] 
+[move more from Fenfire to GtkFixes
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070215234309] 
+[make view menu a radio action group, showing the currently active view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070217192310] 
+[resolve conflict
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070217192802] 
+[primitive support for multiple properties
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070217202451] 
+[refactor menu-creating code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070217204708] 
+[broken 'set property' menu -- adding the current node as a property empties the menu and I can't figure out how to fix that
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070217220536] 
+[make property menu items visible and act on current state
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070218084005] 
+[make menu separator visible too
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218085841] 
+[use property's text in prop menu when available
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218090636] 
+[namespace support; files are now saved as turtle
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218102524] 
+[force .turtle suffix instead of .nt
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218102922] 
+[oops, make new urn-5's have a _ before the running number again, so that they can be used as properties in RDF/XML
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218103539] 
+[using 'p' to cycle through properties doesn't seem to have turned out to be particularly useful; instead, make it revert to rdfs_seeAlso
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218110503] 
+[document the dependency to raptor 1.4.14
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070218134015] 
+[refactor RDF.hs a bit
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218160553] 
+[add separator below 'set property' menu
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218161922] 
+[refactor
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070218193144] 
+[done: make it so that moving to a node with many children shows the beginning of the list
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070219115524] 
+[more Fenfire refactoring, working towards a list view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070219130039] 
+[fix: Shift-P in the text view now enters a P rather than adding the focused node as a property
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070219145848] 
+[use forM instead of flip mapM
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070219145957] 
+[UI for changeURI, which needs to be implemented
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070219225938] 
+[refactor addprop code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070219152311] 
+[a simple FRP-based animation, not using Vobs or Cairo.fhs at this point, as an experiment
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070220153639] 
+[resolve conflict
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070220153843] 
+[use current mouse location as input to FRP test
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070220160537] 
+[handle mouse enter events in FRP test
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070220183202] 
+[implement changeURI
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221070021] 
+[catch exceptions in event handlers
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070221105231] 
+[buggy undo
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070221115743] 
+[fix changeURI to change everything relevant in the state
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221115319] 
+['connect' modifies the graph
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221120015] 
+[merge
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221122323] 
+[undo twids: interpolate; put in toolbar; simplistic undo for text editing (every edit an undo)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221122413] 
+[fix changeURI more
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070221123226] 
+[add some key bindings
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070221133816] 
+[fix a compiler warning, try icon16 instead of logo48
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070222111257] 
+[turn 'make focused node a property' into 'add property' which prompts for a URI (focused node is the default)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070222125056] 
+[store a Path instead of a Rotation in FenState
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070223122117] 
+[when loading a graph, connect the graph node to all subjects in the graph that aren't also objects
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070223124017] 
+[done: relativize URIs on saving
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070224143503] 
+[add an ugly and buggy combo box for active property
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070227212121] 
+[bevelled icon
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070227212518] 
+[twids to the property item in the toolbar -- not sure how it should be
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228133715] 
+[split Fenfire module
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228155145] 
+[refactor
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228162107] 
+[clean Fenfire.fhs imports
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228163416] 
+[refactor more
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228165029] 
+[deal slightly better with bnodes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070228204211] 
+[initial Irc2RDF
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301003706] 
+[offsets for irc lines with the same timestamp
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301101807] 
+[Use System.Glib.UTFString in Raptor instead of CString
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301125823] 
+[.rdfxml files are rdfxml files
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301173337] 
+[implement raptor error message handling in haskell
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301173638] 
+[show exceptions in a message dialog
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301191116] 
+[make error messages copyable
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301192044] 
+[include typing information in irc rdf output
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301195829] 
+[interpret qnames when reading a node in a dialog
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070301205027] 
+['make install' target (calls Cabal)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070302125015] 
+[fix: 'connect' must clean the mark
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070302125313] 
+[use dcterms:created for sorting
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070302131025] 
+[oops, fix date sorting
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070302132816] 
+[license Darcs2RDF and Irc2RDF
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070302142705] 
+[log irc to files determined by channel and utc date
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070306221926] 
+[skip namespaces that have null prefix or uri in raptor
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070306233551] 
+[a buggy latex2png for a start on latex support
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070309031251] 
+[non-compiling image vob
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070309144522] 
+[make image vob compile
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070309145150] 
+[LaTeX vob
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070309190104] 
+[remove deprecations now that we depend on gtk2hs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070310105043] 
+[fix warnings in FunctorSugar
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070310105114] 
+[move RDF to Data.RDF. now Raptor isn't preprocessed correctly any more for some unknown reason
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070311123317] 
+[fix compiling
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070311135110] 
+[fix warnings
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070311150135] 
+[encode the input to LaTeX in utf-8
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070311215103] 
+[irc2rdf fixes: unicode, turtle literals, dateTime vs. date
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070312032142] 
+[correct the sioc vocabulary in irc2rdf
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070313141923] 
+[move stuff to Fenfire package
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070313140338] 
+[render only literals prefixed 'TeX:' in latex
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070313141034] 
+['goto' action (bound to 'g')
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070313141652] 
+[add an extension to files produced by irc2rdf
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070313215638] 
+[refactor RDF module: rename to Fenfire.RDF; rename URI to IRI; add support for typed literals and literals with language tags
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070314100456] 
+[a turtle serializer in haskell -- needs more work to get the escaping right
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070314173718] 
+[turtle serialization escaping
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070314181728] 
+[patch utf-8 checking, support timestamped logs in irc2rdf
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070315015022] 
+[scrolling for prezn view (not ideal)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070315144355] 
+[page up and down try to rotate 10 steps at a time
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070315161006] 
+[suggest loading uri if there's no info about it
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070315165307] 
+[add goto to file menu
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070315172952] 
+[make the channels that irc2rdf logs a command-line argument, suppress a warning on stand-alone compilation
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070315234807] 
+[tuukka's slight simplification of the prezn view scrolling code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070315151344] 
+[maxdepth for prezn view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070315164128] 
+[stringToTriples and triplesToString functions (untested)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316084550] 
+[move raptor interfacing code to Fenfire.RDF
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316092952] 
+[convenience functions for manipulating RDF lists
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316150115] 
+[FromRDF and ToRDF typeclasses
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316200329] 
+[rdf code twids
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316213813] 
+[RDF code tweaks
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070316231549] 
+[use graphURI in containsInfoTriples and findStartPath
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070317083224] 
+[page up and down keys scroll to where the property changes
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070318135738] 
+[scope loadGraph' within loadGraph
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070318140508] 
+[fix loadGraph and loading of files
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070318153317] 
+[make nodes and graphs derive Read; make setGraphURI replace the graph URI in bnodes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070318001027] 
+[add FromRDF Node and ToRDF Node (these are basically no-ops, but having them makes [Node] implement FromRDF and ToRDF)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070318001146] 
+[make the Makefile run configure automatically when needed
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070318001410] 
+[code for relativizing and absolutizing uris in RDF
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070318155207] 
+[add Utils.updateWithDefault (for maps); add run-ghci to Makefile
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070318155235] 
+[start refactoring RDF module -- the new implementation has a much nicer interface, but isn't the default yet
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070320162928] 
+[add inserting and deleting to new graph impl
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070320170646] 
+[finish and use new Graph implementation
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070320211823] 
+[work around bug in Network.URI.relativeFrom
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070321175941] 
+[provide toRDFList and readRDFList which take a function for writing/reading the elements of the list to/from RDF
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070323102541] 
+[remove raptor_finish calls for now as they interfere with lightweight threads of HApps
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070323220245] 
+[better error message (don't use fromJust in something that can be Nothing!)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070323145224] 
+[use Fenfire.RDF in Irc2RDF
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070327171446] 
+[make irc2rdf add triples for concepts mentioned
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070327173951] 
+[strip '+' and '-' from the beginning of IRC lines
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070327192938] 
+[don't consider the graph uri an explicit start node
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070327215301] 
+[overengineer turtle_escaped to work
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070328064237] 
+[cleanup and comment Irc2RDF
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070328075023] 
+[fix: sort connections by property, even if the properties don't have rdfs:labels
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070327213446] 
+[add utilities related to functions of type (Endo inner -> Endo outer) to Utils; includes 'puts' and 'modifies' functions for state monads and monadic versions of gets, puts, etc. (e.g. mgets takes a function (state -> m a) where gets takes a function (state -> a))
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070403181819] 
+[slim down the previous record by removing the Accessor abstraction -- we don't currently need it and while it's an interesting and possibly useful abstraction, the code is less scary and repetitive without it :-)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070403203040] 
+[refactor Fenfire.RDF.query interface slightly: have a separate function returning single values, because having this as one of the overloaded result values of query can make for *bad* error messages
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070404081127] 
+[simplify FromRDF and ToRDF a bit
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070404161824] 
+[some combinators for writing FromRDF and ToRDF instances
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070405143709] 
+[add functionality to mint unused fragids in ToRdfM and some functions to add triples to an existing node, corresponding to existing functions that create a new bnode
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070405151850] 
+[From/ToRDF combinators for getting and adding single properties
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070405155602] 
+[irc2notetaker: a fork of irc2rdf for fenserve notetaker
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070501162509] 
+[remove explicit types from the uses of malloc as tasteless. helps amd64 too
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070508181326] 
+[implement [off] for off-the-record in Irc2RDF
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080413002559] 
+[[off] works for actions too in Irc2RDF
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080413021646] 
+[Fix base URI when loading hash URIs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080421221219] 
+[make compile on Ubuntu 7.10 Gutsy
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080421231344] 
+[remove rdfs:label from property list ui
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080422000241] 
+[Fix revert
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080422002554] 
+[version 0.2
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080422030023] 
+[update docs 0.1 -> 0.2
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20080422040048] 

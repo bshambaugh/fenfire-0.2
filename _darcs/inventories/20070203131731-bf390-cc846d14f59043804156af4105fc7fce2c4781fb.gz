@@ -1,0 +1,378 @@
+["Hello, world"
+benja.fallenstein@gmail.com**20061213213846] 
+[add clipvob
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061213214452] 
+[code for gzz 0.6-style vob scenes & their interpolation
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214000714] 
+[functions to change the size request of a vob
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214000826] 
+[animation
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214003551] 
+[store widths and heights in vobscenes and pass them to vobs' draw methods
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214003729] 
+[merge
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214004522] 
+[clearer variable names in 'interpolate'
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214010957] 
+[key press handler stub
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214020350] 
+[not-yet-working vanishing view code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214030252] 
+[simple makefile, doesn't work for both targets
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214033414] 
+[We get signal: Try using functional reactive programming for the animations
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214193744] 
+[fixes and test data for vanishingView
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214194351] 
+[test main for vanishingView
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214194458] 
+[merge
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214194549] 
+[a fix to "get"
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214201507] 
+[fix tuukka's fix :-)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214203246] 
+[make compile with changes to Vobs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214203301] 
+[visual twids
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061214204904] 
+[schedule redraw to next change of signal
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061214223514] 
+[key binding hack for browsing
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215001216] 
+[more test data, fixes, tweaks
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215001348] 
+[unfinished merge of Fenfire state system with vobMain
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215165725] 
+[make the wheel rotate the way I'm used to :)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215165859] 
+[empty stream and constant signal constructors in Signals
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215165922] 
+[yay, signal-based fenfire! :-)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215172808] 
+[don't have updateable Streams any more, only Signals (we didn't use Stream anywhere except in Signals yet); make Signal into a Monad
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215183336] 
+[simplify streamJoin2
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215185558] 
+[minor cleanup: remove Fenfire.oldmain, move vob test code to VobTest.hs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215193216] 
+[die on key press q, don't die on unknown key presses
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215200047] 
+[rename target vobs as vobtest, depend on all *.hs files
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215200133] 
+[get rid of warnings
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215200809] 
+[limit rotation to height
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215212004] 
+[turn on ghc warnings in makefile, get rid of warnings in code
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215212319] 
+[make vob's sizes (Double, Double) instead of Render (Double, Double)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215211531] 
+[merge
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215213606] 
+[twids to label: use the layout for computing the text extents also to render the text
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215212846] 
+[get rid of RScene, too, the remaining place where the render monad was used but shouldn't be
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215212949] 
+[merge
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061215215027] 
+[fix vanishingView to use the actual vob sizes, now that we don't need the render monad to *get* the sizes any longer
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215214332] 
+[fix conflict
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215215302] 
+[fix
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215220133] 
+[fix
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061215221221] 
+[get rid of the Signals module which seems to only have been a complication at this point
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061216225215] 
+[something animates. it's slow, but I'm not sure whether it's a bug or my computer
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061216234424] 
+[add to Makefile targets to run the binaries
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061216235700] 
+[use PangoRectangle with realToFrac
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061216235820] 
+[fix warnings
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061217000406] 
+[port bouncing animation from java updatemanager
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061220205910] 
+[use rdfs:label as text property when available; don't show rdfs:label connections
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061220213347] 
+[add entering and backspacing text. quitting is alt-q now. there's no text cursor yet; all editing happens at the end of the node.
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061220220649] 
+[multiline text
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061221154846] 
+[use smaller font; always make nodes at least the font metrics' height
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061221161142] 
+[use the maximum of the two rectangles returned by layoutGetExtents for multiline text vobs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061221161927] 
+[break too long words in multiline
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221163404] 
+[don't interpolate after text editing
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061221162944] 
+[make vobtest compile
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221164600] 
+[add rgbaColor
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221170010] 
+[use x' as meant in bounceFract
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221174520] 
+[fix warnings
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221174708] 
+[move test graph back to module level
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061221235600] 
+[make Fenfire usable in ghci once again
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061222000822] 
+[extend names of lambda _ variables
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061222001424] 
+[interpolate key presses, don't interpolate if vobs don't move
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061222023957] 
+[fix interpolationNull and rename it to the traditional isInterpUseful
+benja.fallenstein@gmail.com**20061222133024] 
+[turn vobMain into a function returning a widget, so that we can combine it with other widgets
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222165131] 
+[use a TextView widget for text editing
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222193305] 
+[oops, make compile again
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222193841] 
+[tell Gtk whether we handled an event, so that key events we handled aren't also interpreted by Gtk too
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222200731] 
+[make 'q' quit again in Fenfire when the vob canvas has focus
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222200914] 
+[a bit of code simplification
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222211243] 
+[more small code simplification
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061222214115] 
+[fix the compiler warning
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061222214958] 
+[more code twids
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061223010123] 
+[finally, a readable vanishing view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061225192016] 
+[down arrow shouldn't change focus even in case of no rotation
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061226001043] 
+[use monad transformers in vanishing view plumbing
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061226160359] 
+[vanishingview plumbing code twids
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061226173512] 
+[try generalizing types as tuukkah suggested
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061226185627] 
+[make functions return Maybe again instead of MonadPlus, I think it makes more sense; rename returnList to returnEach and returnMaybe to maybeReturn
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061227093653] 
+[implement the vob system discussed on IRC yesterday
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061227153044] 
+[Connections!
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061227153106] 
+[run the view before getting the animation start time, so that we don't have an ugly jump if creating the view takes some time
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061227154448] 
+[fix the bug that allowed the user to move to some wrong rotations
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061227155850] 
+[scaling when depth increases
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061230110209] 
+[depth fading
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061230143507] 
+[property labels kinda-sorta work
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061230155501] 
+[don't set empty text on textless nodes - hacked using mdo notation
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061230180158] 
+[key bindings for creating new nodes: n for new node poswards, N for new node negwards
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061230173043] 
+[key bindings for making connections. making connections between nearby nodes can lead to weird-looking view errors because our code is buggy when the same node is found on more than one path.
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061230175255] 
+[merge
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061230180414] 
+[use random numbers instead of time for new node ids -- the previous version would give nodes created the same second the same id :)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231123423] 
+[fix the key binding for comma
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061231140622] 
+[fix warnings
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061231141324] 
+[focus the canvas on click
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061231143804] 
+[ugly buggy load/save support
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231151641] 
+[make looping graphs less ugly by showing the node instance with the least depth instead of the one with the greatest depth :)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231153156] 
+[don't make main quit with 'Prelude.undefined'. now tuukkah can make better URIs for nodes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231153907] 
+[make copyrighted
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231155833] 
+[get ahead of myself
+Benja Fallenstein <benja.fallenstein@gmail.com>**20061231160133] 
+[Fenfire, not Alph
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20061231161319] 
+[simplify key handler a little by monadifying it
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070101091038] 
+[tidy up handleKey some more -- still ugly, but less so
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070101093114] 
+[more cleanup; it turns out we didn't really need to keep track of whether the state was modified, at this point
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070101094457] 
+[load test graph in run-fenfire
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102014055] 
+[one scene has subpixel rendering, the other does not
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102014300] 
+[add key bindings for connection breaking
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102030013] 
+[don't try to be smart about rendering connection labels upside-down
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070101152550] 
+[fix warning
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102030549] 
+[on connect, don't add empty literal, don't move
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102033226] 
+[avoid duplicate triples in connect
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102033736] 
+[keep track of current file name
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102055457] 
+[try using pattern guards in connection and onConnection
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102082448] 
+[fix
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070101210809] 
+[merge
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070102101118] 
+[try FFI to Raptor RDF library
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102164729] 
+[access Raptor Statements using C2HS preprocessor
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102215146] 
+[use the "guess" parser and test.n3 by default
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070102215359] 
+[use Raptor for rdf loading in Fenfire
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103032554] 
+[buggy refactored version
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070103121221] 
+[Benja's update to more vobs in vobtest
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103151526] 
+[the fix to clipVob
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103151633] 
+[change transform to take a matrix transformation instead of a matrix
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103170937] 
+[small fixes to the text view state
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103175847] 
+[show old connections above new connections
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103203435] 
+[supress warnings about deprecations in gtk2hs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070103224707] 
+[shorten connections more with depth
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104002426] 
+[some comments and style in vanishingView
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104003239] 
+[Makefile: touch the binary files if make needs that but ghc doesn't
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104132634] 
+[Report which deprecated type Raptor gives us if any
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104133034] 
+[handle the deprecated IDENTIFIER_TYPE_PREDICATE for Raptor 1.4.8
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104153219] 
+[Makefile: clean *.i files. Check if Raptor parser is null
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070104133413] 
+[more vob refactoring
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070105093040] 
+[more vob refactoring. this is more like it
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070105215747] 
+[extract saveGraph from saveFile
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107132920] 
+[save uses Raptor
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107134639] 
+[add the interface to Raptor serializing
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107134737] 
+[move test.n3 to test.nt and insert space before periods to match Raptor output
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107134828] 
+[make setText preserve the position of the triple
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107140329] 
+[make Cx a monad
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070106231907] 
+[more vob refactoring
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070107092830] 
+[compile on ghc 6.6: allow-undecidable-instances for MaybeT, hide Data.Monoid.Endo
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107150126] 
+[cleanup Raptor.chs, fix mem leaks
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070107175019] 
+[force use of the hierarchical library names
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070108204002] 
+[properly depth-sorted vanishing view
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111152552] 
+[make compile on ghc 6.6
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070111173814] 
+[get rid of ListT, use the more 'imperative' forM_ instead
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111173127] 
+[sort nodes alphabetically
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111181105] 
+[use the reader monad instead of the state monad in Fenfire.hs, it reduces the potential for bugs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111221405] 
+[handle RDF loops correctly (I hope...)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111225018] 
+[refactoring
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070111233406] 
+[do show connective lines even in loops
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070112104901] 
+[factor the structured cairo stuff out of Vobs.hs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070115181933] 
+[refactor the ugly wheel code in Fenfire.hs a bit
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070116091204] 
+[kill one extra line. ha.
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070116091418] 
+[clarify some imports
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070116111355] 
+[try a Monoid (cx m) instance
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070116163533] 
+[hack in support for recognizing .turtle in addition to .ttl
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070116202011] 
+[wrap long lines in text widget instead of widening the window
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070116204825] 
+[Raptor: proper use of bracket, types and type annotations
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070116230826] 
+[use an even more ambitious monoid instance: instance (Monad m, Monoid o) => Monoid (m o)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070118085815] 
+[refactor Cairo to make transformation functions nicer
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070120134636] 
+[refactor Cairo to require only an applicative functor, not a monad, as the cx functor
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070121092642] 
+[added functortest
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070121200622] 
+[use Control.Applicative instead of our own implementation, and start to use the preprocessor for functor syntax
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070121205115] 
+[use the preprocessor also for Fenfire.hs and VobTest.hs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070121210219] 
+[clean up the Makefile
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070122195520] 
+[remove obsolete rdf parsing and serializing code
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070122200047] 
+[fix warnings
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070122200355] 
+[show *something like* Janne's daisy graphs in VobTest
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070125172601] 
+[add a keybinding for removing the literal of a node
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070125211944] 
+[when resizing the window, keep the vertical size of the text edit widget fixed
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070125213807] 
+[implement non-rotating letters and dash style in and for daisyGraph
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070126163243] 
+[show nicer daisy graphs in vobtest. the data in the repo is fake because we don't know if we can publish the real data
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070127113959] 
+[convert DaisyData.txt to iso-8859-1 for now
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070127115703] 
+[small refactoring in Fenfire.hs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128124603] 
+[make Vobs an .fhs file
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128142748] 
+[refactor Cairo
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128144833] 
+[fix
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128145439] 
+[add a simple implementation of the Cairo class to Cairo.fhs
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128164747] 
+[more work towards making the Cairo instance in Vobs less monolithic
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128181602] 
+[minor cleanups
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070128212605] 
+[add profiling support to Makefile
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070129021936] 
+[profilable works without clean, add non-profilable target to Makefile
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070129220322] 
+[Do away with the buggy explicit rule for getting Raptor.o
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070202235226] 
+[use $(MAKE) to make recursive calls to make properly
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070203000001] 
+[get rid of our own transformPoint impl -- the bug is actually fixed
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070202201945] 
+[refactor the makefile a bit
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070203005833] 
+[include a warning comment in preprocessed fhs files
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070203010352] 

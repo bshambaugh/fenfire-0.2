@@ -1,0 +1,293 @@
+{-# OPTIONS_GHC -fallow-overlapping-instances -fimplicit-params #-}
+module Fenfire where
+
+-- Copyright (c) 2006-2007, Benja Fallenstein, Tuukka Hastrup
+-- This file is part of Fenfire.
+-- 
+-- Fenfire is free software; you can redistribute it and/or modify it under
+-- the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+-- 
+-- Fenfire is distributed in the hope that it will be useful, but WITHOUT
+-- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+-- or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+-- Public License for more details.
+-- 
+-- You should have received a copy of the GNU General
+-- Public License along with Fenfire; if not, write to the Free
+-- Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+-- MA  02111-1307  USA
+
+import qualified Fenfire.Cache as Cache
+import Fenfire.Cairo hiding (rotate, Path)
+import Fenfire.Vobs
+import Fenfire.Utils
+import qualified Fenfire.Raptor as Raptor
+import Fenfire.URN5
+import Fenfire.RDF
+
+import qualified Data.Map as Map
+import qualified Data.Set as Set
+import qualified Data.List as List
+import Data.Set (Set)
+import Data.Maybe (fromMaybe, fromJust, isJust, isNothing, catMaybes, 
+                   listToMaybe)
+import Data.Monoid(Monoid(mempty, mconcat))
+
+import Control.Applicative
+import Control.Monad (when, guard, mplus, msum, liftM, join)
+
+import qualified Network.URI
+
+import System.Mem.StableName
+
+data ViewSettings = ViewSettings { hiddenProps :: [Node], maxCenter :: Int }
+data FenState = FenState {
+    fsGraph :: Graph, fsPath :: Path, fsMark :: Mark,
+    fsFilePath :: FilePath, fsGraphModified :: Bool, fsHasFocus :: Bool,
+    fsView :: Int, fsProperty :: Node, fsProperties :: Set Node,
+    fsUndo :: [(Graph,Path)], fsRedo :: [(Graph,Path)]}
+    
+fsNode :: FenState -> Node
+fsNode (FenState { fsPath = Path node _ }) = node
+
+fsRotation :: (?vs :: ViewSettings, ?graph :: Graph) => FenState -> Rotation
+fsRotation = fromPath . fsPath
+                           
+type Views = [(String, View FenState Node)]
+
+data Rotation = Rotation { rotationNode :: Node, rotationOffs :: Int }
+        deriving (Eq, Show)
+
+fromPath :: (?vs :: ViewSettings, ?graph :: Graph) => Path -> Rotation
+fromPath path@(Path node (Conn _ dir _ : _)) = fromMaybe (Rotation node 0) $ do
+    let c = conns node dir
+    i <- List.elemIndex path c
+    return $ Rotation node (i - min (length c `div` 2) (maxCenter ?vs))
+fromPath (Path node []) = Rotation node 0
+                     
+toPath :: (?vs :: ViewSettings, ?graph :: Graph) =>
+          Rotation -> Dir -> Maybe Path
+toPath (Rotation node r) dir = let c = conns node dir in
+    c !? (min (length c `div` 2) (maxCenter ?vs) + r)
+    
+toPath' rot@(Rotation node _) =
+    head $ catMaybes [toPath rot Pos, toPath rot Neg, Just $ Path node []]
+    
+connsCache :: Cache.Cache (StableName Graph, (Node, Dir)) [Path]
+connsCache = Cache.newCache 10000
+
+dc_date = IRI "http://purl.org/dc/elements/1.1/date"
+dcterms_created = IRI "http://purl.org/dc/terms/created"
+
+conns :: (?vs :: ViewSettings, ?graph :: Graph) => Node -> Dir -> [Path]
+conns node dir = Cache.cached (Cache.byAddress ?graph, (node,dir))
+                              connsCache result where
+    result = map (\(prop, node') -> Path node [Conn prop dir node']) sorted
+    sorted = List.sortBy cmp' list
+    cquery (x,p,y) = case dir of Pos -> iquery (x,p,y); Neg -> iquery (y,p,x)
+    list = [(p,n) | p <- cquery (node, X, Any),
+                    not (p `elem` hiddenProps ?vs), 
+                    n <- cquery (node, p, X) ]
+    cmp n1 n2 | Just d1 <- f n1, Just d2 <- f n2 = compare d1 d2 where
+        f n = msum [g dc_date n, g dcterms_created n]
+        g prop n = iquery (n, prop, X) :: Maybe Node
+    cmp n1 n2 = compare (f n1) (f n2) where
+        f n = maybe (Left n) Right $ getText n
+    cmp' (p1,n1) (p2,n2) = catOrds (cmp p1 p2) (cmp n1 n2)
+    catOrds EQ o = o; catOrds o _ = o
+
+rotate :: (?vs :: ViewSettings, ?graph :: Graph) =>
+          Rotation -> Int -> Maybe Rotation
+rotate (Rotation n r) dir = let rot = Rotation n (r+dir) in do
+    guard $ any isJust [toPath rot d | d <- [Pos, Neg]]; return rot
+
+move :: (?vs :: ViewSettings, ?graph :: Graph) =>
+        Rotation -> Dir -> Maybe Rotation
+move rot dir = do path <- toPath rot dir
+                  return $ fromPath (rev path)
+
+getText :: (?graph :: Graph) => Node -> Maybe String
+getText n = listToMaybe $ catMaybes $ map f $ iquery (n, rdfs_label, X) where
+    f (Literal s _) = Just s; f _ = Nothing
+    
+getTextOrIRI :: (?graph :: Graph) => Node -> String
+getTextOrIRI n = fromMaybe (showNode (graphNamespaces ?graph) n) (getText n)
+                    
+setText :: Node -> String -> Endo Graph
+setText n t = update (n, rdfs_label, Literal t Plain)
+
+nodeView :: (?graph :: Graph) => Node -> Vob Node
+nodeView n = useFgColor $ case getTextOrIRI n of
+    'T':'e':'X':':':s -> latex s
+    s                 -> multiline False 20 s
+    
+propView :: (?graph :: Graph) => Node -> Vob Node
+propView n = (useFadeColor $ fill extents)
+           & (pad 5 $ useFgColor $ label $ getTextOrIRI n)
+
+
+
+presentationView :: (?vs :: ViewSettings) => View FenState Node
+presentationView state = let ?graph = fsGraph state in result where
+    result :: (?graph :: Graph) => Vob Node
+    result = cursor & vob where
+    Rotation node r0 = fsRotation state
+    children = map rotationNode $
+                   catMaybes [move (Rotation node (r0+i)) Pos | i <- [-12..20]]
+    selected = fmap (getSide Pos) (toPath (fsRotation state) Pos)
+    f sc n = keyVob n $ useFgColor $ pad 5 $ scaleVob sc $
+                 multiline True 70 $ getTextOrIRI n
+    cursor = flip (maybe mempty) selected $ \n -> 
+                 showAtKey n $ keyVob (Literal "CURSOR" Plain) $ rectBox mempty
+    space = changeSize (const (0, 20)) mempty
+    vobs = List.intersperse space $ f 3 node : map (f 2) children
+    index = fromMaybe 0 $ selected >>= \n -> List.elemIndex n children
+    y = sum $ map defaultHeight $ take (2 * index) vobs
+    vob = pad 30 $ translate #0 #(-y) $ vbox $ vobs
+
+
+tryRotate :: (?vs :: ViewSettings, ?graph :: Graph) =>
+             Rotation -> Int -> Maybe Rotation
+tryRotate rot dir = listToMaybe $ catMaybes 
+    [rotate rot dir' | dir' <- reverse $ map (signum dir *) [1..abs dir]]
+
+tryMove :: (?vs :: ViewSettings, ?graph :: Graph) =>
+           Rotation -> Dir -> Maybe Rotation
+tryMove rot@(Rotation n r) dir = maybe rot' Just (move rot dir) where
+    rot' | r == nearest = Nothing
+         | otherwise    = Just $ Rotation n nearest
+    nearest | r > 0     = len-1 - min (len `div` 2) (maxCenter ?vs)
+            | otherwise = 0 - min (len `div` 2) (maxCenter ?vs)
+    len = (length $ conns n dir)
+    
+findChange :: (?vs :: ViewSettings, ?graph :: Graph) =>
+              Rotation -> Int -> Maybe Rotation
+findChange rot@(Rotation n r) dir = fmap (Rotation n . (r+)) change where
+    change = listToMaybe $ List.sortBy (\x y -> abs x `compare` abs y)
+                  $ catMaybes [findChange' Neg, findChange' Pos]
+    findChange' dir' = fmap (subtract r) r' where
+        len = length $ conns n dir'
+        index = r + min (len `div` 2) (maxCenter ?vs)
+        later = if dir > 0 then           drop (index+1) $ conns n dir'
+                           else reverse $ take  index    $ conns n dir'
+        pathToProp (Path _ [Conn prop _ _]) = prop
+        pathToProp (Path _ _) = error "pathToProp undefined for long paths"
+        currentProperty = fmap pathToProp $ toPath rot dir'
+        (same,next) = span ((== currentProperty) . Just . pathToProp) later
+        r' = listToMaybe $ map (rotationOffs . fromPath) $ reverse same ++ next
+
+modifyGraph :: Graph -> Path -> Endo FenState
+modifyGraph graph' path' state = 
+    state { fsGraph=graph', fsPath=path', fsGraphModified=True,
+            fsUndo=(fsGraph state, fsPath state):fsUndo state, fsRedo=[]}
+
+newNode :: (?vs :: ViewSettings, ?uriMaker :: URIMaker) => 
+           Dir -> EndoM IO FenState
+newNode dir state@(FenState { fsGraph = graph, fsProperty = prop,
+                              fsPath = Path node _ }) = do
+    node' <- liftM IRI newURI
+    let graph' = insert (triple dir (node, prop, node'))
+               $ insert (node', rdfs_label, Literal "" Plain) graph
+     in return $ modifyGraph graph' (Path node' [Conn prop (rev dir) node]) state
+    
+connect :: (?vs :: ViewSettings) => Dir -> Endo FenState
+connect _ state | Set.null (fsMark state) = state
+connect dir state =
+    let nodes = Set.toList (fsMark state); prop = fsProperty state in
+    let ?graph = foldr (\n -> insert $ triple dir (fsNode state, prop, n))
+                       (fsGraph state) nodes in
+    modifyGraph ?graph (Path (fsNode state) [Conn prop dir (head nodes)]) state
+        { fsMark = Set.empty }
+
+disconnect :: (?vs :: ViewSettings) => Dir -> Endo FenState
+disconnect dir state = let ?graph = fsGraph state in
+    let rot = fsRotation state in
+    case toPath rot dir of
+        Nothing -> state
+        Just path -> 
+            let path' = fromMaybe (Path (fsNode state) []) $
+                        msum [flip toPath xdir =<< rotate rot ydir |
+                              xdir <- [Neg,Pos], ydir <- [-1,1]]
+                triples = pathToTriples path
+                graph' = foldr delete (fsGraph state) triples
+             in modifyGraph graph' path' state
+
+
+type Mark = Set Node
+
+toggleMark :: Node -> Endo Mark
+toggleMark n mark | n `Set.member` mark = Set.delete n mark
+                  | otherwise           = Set.insert n mark
+
+newGraph :: (?uriMaker :: URIMaker) => IO (Graph, Path)
+newGraph = do
+    home <- liftM IRI newURI; let dftGraph = IRI "dummy:new-graph"
+    let graph = toGraph dftGraph [(home, rdfs_label, Literal "" Plain)]
+    return (graph, Path home [])
+    
+findStartPath :: (?vs :: ViewSettings) => Maybe String -> Graph -> Path
+findStartPath (Just uri) g | defaultGraph g /= IRI uri = let ?graph = g in 
+    toPath' $ Rotation (IRI uri) 0
+findStartPath _ g = let ?graph = g in result where
+    result :: (?graph :: Graph) => Path
+    result = head $ catMaybes $ [startNode,topic,document] where
+
+    self = defaultGraph g
+
+    startNode = fmap getRot $ getTriple self ffv_startNode
+    topic = fmap getRot $ getTriple self foaf_primaryTopic
+    document = Just (Path self [])
+    
+    getTriple s p = iquery (s,p,Any) :: Maybe Triple
+    getRot (s,p,o) = Path o [Conn p Neg s]
+    
+    ffv_startNode = IRI "http://fenfire.org/rdf-v/2003/05/ff#startNode"
+    foaf_primaryTopic = IRI "http://xmlns.com/foaf/0.1/primaryTopic"
+    
+containsInfoTriples :: (?vs :: ViewSettings) => Graph -> Graph
+containsInfoTriples g = toGraph d [(s, p, o) | o <- os, o /= s] where
+    s = defaultGraph g
+    p = IRI "ex:containsInformationAbout"
+    d = IRI ("http://fenfire.org/2007/03/contains-info?" ++ iriStr s)
+    triples = fromDefaultGraph g :: [Triple]
+    [subjects, objects] = for [subject, object] $ \f -> map f triples
+    os = Set.toAscList $ foldr Set.delete (Set.fromList subjects) objects
+
+loadGraph :: FilePath -> IO Graph
+loadGraph fileName = 
+    if List.isPrefixOf "http:" fileName
+        then do let document = takeWhile (/='#') fileName -- FIXME redirects!
+                loadGraph' (Raptor.uriToTriples fileName) document
+        else do uri <- Raptor.filenameToURI fileName
+                loadGraph' (Raptor.filenameToTriples fileName) uri
+    where loadGraph' load' baseuri = do
+              (triples, namespaces) <- load' (Just baseuri)
+              return $ raptorToGraph triples namespaces baseuri
+
+saveGraph :: Graph -> FilePath -> IO ()
+saveGraph graph fileName = do
+    --writeFile fileName $ toNTriples $ reverse graph
+    let (raptorTriples, namespaces) = graphToRaptor graph
+    Raptor.triplesToFilename raptorTriples namespaces fileName
+    putStrLn $ "Saved: " ++ fileName
+
+newState :: Graph -> Path -> FilePath -> Bool -> FenState
+newState graph path fp focus = 
+    FenState graph path Set.empty fp False focus 0 rdfs_seeAlso ps [] []
+    where ps = Set.insert rdfs_seeAlso $ Set.delete rdfs_label
+                   $ query (Any, X, Any) graph
+
+stateReplaceNode :: Node -> Node -> Endo FenState
+stateReplaceNode m n s@(FenState { fsPath = Path node cs }) = FenState {
+    fsGraph = replaceNode m n (fsGraph s),
+    fsPath = Path (f node) (map (\(Conn p d n') -> Conn (f p) d (f n')) cs),
+    fsMark = if m `Set.member` fsMark s
+             then Set.insert n $ Set.delete m $ fsMark s else fsMark s,
+    fsProperty = f (fsProperty s), fsProperties = Set.map f (fsProperties s),
+    fsGraphModified = True,
+    fsFilePath = fsFilePath s, fsHasFocus = fsHasFocus s, fsView = fsView s,
+    fsUndo = (fsGraph s, fsPath s) : fsUndo s, fsRedo = []
+    } where f x = if x == m then n else x
+

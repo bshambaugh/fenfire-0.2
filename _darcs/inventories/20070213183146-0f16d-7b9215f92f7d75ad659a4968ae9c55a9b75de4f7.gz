@@ -1,0 +1,157 @@
+Starting with tag:
+[TAG kaijanaho.info fenfire-hs 2007-02-03
+Automatic Date Tagger <antti-juhani@kaijanaho.fi>**20070203131731] 
+[add a menu bar and a toolbar
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070203133931] 
+[add a window icon
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204002949] 
+[TAG kaijanaho.info fenfire-hs 2007-02-03
+Automatic Date Tagger <antti-juhani@kaijanaho.fi>**20070203215808] 
+[tweak code formatting
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070204123944] 
+[limit total number of nodes to show
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070204125846] 
+[place a few more nodes than we draw
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070204133047] 
+[implement key bindings with AccelGroup and ActionGroup, more actions
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204154201] 
+[fix graph creation, cleanup init and stateChanged
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204162436] 
+[implement Edit menu
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204201617] 
+[start a README
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204203159] 
+[tweak README and Makefile, add instructions
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204214912] 
+[actionHandler support in Vobs, move action implementations to handleAction, action tweaks
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204222808] 
+[confirm overwrite of same file in saveas
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204224154] 
+[make setText work on textless nodes
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070204230445] 
+[shorten main somewhat by extracting action widget creation, extract makeWindow from main
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070205002649] 
+[implement marking multiple nodes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205150544] 
+[refactor RDF.hs to make it faster. some of the code is pretty ugly, everybody please feel free to refactor it to make it nicer =-)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205162757] 
+[fixes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205163921] 
+[argh, fix order of triples in output
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205164258] 
+[bring alphabetical sorting back, without caching -- doesn't seem too slow yet
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205194703] 
+[add infrastructure for caching, not used yet, doesn't use weak refs yet
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070205200417] 
+[cache alphabetical sorting
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070206174610] 
+[add tool to dump darcs patch data to N-Triples
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070206192052] 
+[add some simple animation for daisy graphs -- not very good
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070207131301] 
+[refactor daisy graph code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070207153307] 
+[use weak values in cache
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070208124440] 
+[buggy new daisy graph interpolation impl
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070208132416] 
+[twid new daisy code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209133239] 
+[make ViewSettings an implicit parameter
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209160955] 
+[refactor Fenfire to make the state a record
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209163401] 
+[add support for loading multiple graphs and editing only the first of them, thus allowing us to browse the darcs data together with the project file
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209174858] 
+[fix the virtual darcs graph thingie
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209204420] 
+[makefile target to make darcs.nt which contains information about darcs commits
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209204439] 
+[make Cache use LRU instead of weak references, it seems that these were cleared to eagerly by the gc
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209204942] 
+[say on stdout when we save so that there is at least *some* feedback that the save succeeded
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070209205824] 
+[fixes: remove harp warnings, document haxml dependency, tweak makefile, add target run-project
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070210102108] 
+[use linked lists for the LRU functionality in the cache
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070210101942] 
+[fix logo48.png, add logo.svg and an about dialog
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070210124911] 
+[save button sensitivity tracks graph modification state
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070210151614] 
+[repo -> month -> day -> patches hierarchy to make browsing many patches easier
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070210132043] 
+[tryMove, which rotates to nearest connection if move fails
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070210161838] 
+[pass parent window to dialogs as an implicit parameter, confirm file closing operations with a dialog
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070210201709] 
+[pick start node better. I've seen less ugly code
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070210180652] 
+[explicitly hide the about dialog for gtk versions 2.10 and on
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211090143] 
+[add action for revert file
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211100824] 
+[set default action on dialogs
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211153044] 
+[TAG kaijanaho.info fenfire-hs
+Automatic Date Tagger <antti-juhani@kaijanaho.fi>**20070210215808] 
+[fix interpolation when scrolling quickly by jumping scenes
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211152552] 
+[use URN-5 (note: uses System.Random which is not a cryptographically safe RNG)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211161528] 
+[cabalize; preprocessing doesn't work, reason unknown
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211173735] 
+[make Cabal preprocessing work
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211182025] 
+[make it compile right by adding stuff to GHC-Options
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211182550] 
+[manage data files so that Cabal can install them
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211194519] 
+[do the right thing about -lraptor
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211195831] 
+[include README with release tarball
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070211200302] 
+[don't capitalize fenfire in cabal-generated files
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211200541] 
+[oops, de-capitalize fenfire in Paths_Fenfire
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211200932] 
+[fix cancelling in saveas dialog of confirmSave. thanks Benja for noticing!
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211203652] 
+[background highlight for view focus, bgColor for focus node, focusColor for keyboard focus
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211225324] 
+[remove the unsafe Alt-q key binding. window manager can close windows anyway
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070211232028] 
+[fix paned resizing
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070212004402] 
+[fix graph filepath from commandline to be absolute again
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070212005009] 
+[try a lighter background highlight
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070212115008] 
+[try to make the makefile compile through Cabal -- hackish
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212130002] 
+[twid visual appearance of the focus indicators
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212133852] 
+[resolve conflict
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212134356] 
+[twid focus indicators more
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212140542] 
+[oops, fix mark color
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212141724] 
+[integrate the haskell-src-exts code into the fenfire-hs repository
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212172743] 
+[rename fsFocus to fsHasFocus
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212154827] 
+[make setup.hs check modification times before running happy; add Preprocessor files to tarball
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212183543] 
+[don't fail in case that Parser.hs doesn't exist (happy hasn't been run)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212184533] 
+[argh, remove *Parser.hs*, keep *Parser.ly*, don't do it the other way around
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212185658] 
+[remove Extra-Source-Files which is only used by the buggy sdist (we'll presumably use darcs dist instead)
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070212190119] 
+[documentation updates
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070213121132] 
+[force .nt suffix for now
+Benja Fallenstein <benja.fallenstein@gmail.com>**20070213182113] 
+[update required version numbers in README
+Tuukka Hastrup <Tuukka.Hastrup@iki.fi>**20070213182456] 
